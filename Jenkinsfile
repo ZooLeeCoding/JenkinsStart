@@ -1,8 +1,10 @@
 pipeline {
-    agent { docker 'node:6.3' }
+    agent any
     stages {
         stage('build') {
             steps {
+                sh 'curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -'
+                sh 'sudo apt-get install -y nodejs'
                 sh 'npm --version'
             }
         }
